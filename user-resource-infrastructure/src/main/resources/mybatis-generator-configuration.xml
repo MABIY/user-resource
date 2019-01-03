@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+		PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+		"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <properties resource="db.properties"/>
+    <context id="mysql" defaultModelType="flat" targetRuntime="MyBatis3Simple">
+        
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/><!-- 是否取消注释 -->
+            <property name="suppressDate" value="false"/> <!-- 是否生成注释代时间戳-->
+        </commentGenerator>
+
+
+        <jdbcConnection driverClass="${spring.datasource.driver-class-name}"
+                        connectionURL="${spring.datasource.url}"
+                        userId="${spring.datasource.username}"
+                        password="${spring.datasource.password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="net.vipmro.user.passport.domain.model.po"
+                            targetProject="../user-passport-domain/src/main/java">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mybatis" targetProject="../user-passport-infrastructure/src/main/resources">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="net.vipmro.user.passport.infrastructure.mapper"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+        
+        <!--<table tableName="register">-->
+            <!--<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>-->
+            <!--<columnOverride column="is_login" javaType="java.lang.String" jdbcType="CHAR"/>-->
+            <!--<columnOverride column="status" javaType="java.lang.String" jdbcType="CHAR"/>-->
+            <!--<columnOverride column="login_count" javaType="java.lang.Integer" jdbcType="TINYINT"/>-->
+        <!--</table>-->
+	    <!--<table  tableName="dealer" >-->
+	    <!--<generatedKey column="ID" sqlStatement="Mysql" identity="true" />-->
+	    <!--<columnOverride column="modify_user_id" javaType="java.lang.Long" jdbcType="INTEGER" />-->
+	    <!--</table>-->
+        
+        <!--<table tableName="seller_goods">-->
+        <!--<generatedKey column="id" sqlStatement="mysql" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="goods">-->
+        <!--<generatedKey column="id" sqlStatement="mysql" identity="true"/>-->
+        <!--</table>-->
+    <!---->
+        <!--<table tableName="category">-->
+            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+            <!--<columnOverride column="is_leaf" javaType="int" jdbcType="TINYINT" />-->
+        <!--</table>-->
+        <!--<table tableName="brand">-->
+        <!--<generatedKey column="id" sqlStatement="mysql" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="sso_user">-->
+            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+        <!--</table>-->
+
+    </context>
+</generatorConfiguration>
+

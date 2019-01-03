@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.vipmro.user.resource.infrastructure.mapper.GoodsMapper">
+  <resultMap id="BaseResultMap" type="net.vipmro.user.resource.domain.model.po.Goods">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="cate_id" jdbcType="INTEGER" property="cateId" />
+    <result column="brand_id" jdbcType="INTEGER" property="brandId" />
+    <result column="goods_no" jdbcType="VARCHAR" property="goodsNo" />
+    <result column="buy_no" jdbcType="VARCHAR" property="buyNo" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="model" jdbcType="VARCHAR" property="model" />
+    <result column="measure" jdbcType="VARCHAR" property="measure" />
+    <result column="weight" jdbcType="DECIMAL" property="weight" />
+    <result column="market_price" jdbcType="DECIMAL" property="marketPrice" />
+    <result column="keywords" jdbcType="VARCHAR" property="keywords" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="is_new" jdbcType="BIT" property="isNew" />
+    <result column="is_hot" jdbcType="TINYINT" property="isHot" />
+    <result column="order_sn" jdbcType="INTEGER" property="orderSn" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="create_user_id" jdbcType="INTEGER" property="createUserId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_user_id" jdbcType="INTEGER" property="modifyUserId" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="series" jdbcType="VARCHAR" property="series" />
+    <result column="third_key" jdbcType="INTEGER" property="thirdKey" />
+    <result column="is_manual" jdbcType="CHAR" property="isManual" />
+    <result column="syn_code" jdbcType="VARCHAR" property="synCode" />
+    <result column="spu_id" jdbcType="BIGINT" property="spuId" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="package_num" jdbcType="VARCHAR" property="packageNum" />
+    <result column="size" jdbcType="VARCHAR" property="size" />
+    <result column="cubage" jdbcType="DECIMAL" property="cubage" />
+    <result column="bar_code" jdbcType="VARCHAR" property="barCode" />
+    <result column="second_cate_id" jdbcType="VARCHAR" property="secondCateId" />
+    <result column="series_group" jdbcType="VARCHAR" property="seriesGroup" />
+    <result column="product_area" jdbcType="VARCHAR" property="productArea" />
+    <result column="manufacturer_id" jdbcType="INTEGER" property="manufacturerId" />
+    <result column="is_effectived" jdbcType="TINYINT" property="isEffectived" />
+    <result column="syn_code_ez" jdbcType="VARCHAR" property="synCodeEz" />
+    <result column="short_name" jdbcType="VARCHAR" property="shortName" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from goods
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="net.vipmro.user.resource.domain.model.po.Goods">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into goods (cate_id, brand_id, goods_no, 
+      buy_no, title, model, 
+      measure, weight, market_price, 
+      keywords, image, is_new, 
+      is_hot, order_sn, status, 
+      create_user_id, create_time, modify_user_id, 
+      modify_time, series, third_key, 
+      is_manual, syn_code, spu_id, 
+      remark, package_num, size, 
+      cubage, bar_code, second_cate_id, 
+      series_group, product_area, manufacturer_id, 
+      is_effectived, syn_code_ez, short_name
+      )
+    values (#{cateId,jdbcType=INTEGER}, #{brandId,jdbcType=INTEGER}, #{goodsNo,jdbcType=VARCHAR}, 
+      #{buyNo,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{model,jdbcType=VARCHAR}, 
+      #{measure,jdbcType=VARCHAR}, #{weight,jdbcType=DECIMAL}, #{marketPrice,jdbcType=DECIMAL}, 
+      #{keywords,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, #{isNew,jdbcType=BIT}, 
+      #{isHot,jdbcType=TINYINT}, #{orderSn,jdbcType=INTEGER}, #{status,jdbcType=CHAR}, 
+      #{createUserId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{modifyUserId,jdbcType=INTEGER}, 
+      #{modifyTime,jdbcType=TIMESTAMP}, #{series,jdbcType=VARCHAR}, #{thirdKey,jdbcType=INTEGER}, 
+      #{isManual,jdbcType=CHAR}, #{synCode,jdbcType=VARCHAR}, #{spuId,jdbcType=BIGINT}, 
+      #{remark,jdbcType=VARCHAR}, #{packageNum,jdbcType=VARCHAR}, #{size,jdbcType=VARCHAR}, 
+      #{cubage,jdbcType=DECIMAL}, #{barCode,jdbcType=VARCHAR}, #{secondCateId,jdbcType=VARCHAR}, 
+      #{seriesGroup,jdbcType=VARCHAR}, #{productArea,jdbcType=VARCHAR}, #{manufacturerId,jdbcType=INTEGER}, 
+      #{isEffectived,jdbcType=TINYINT}, #{synCodeEz,jdbcType=VARCHAR}, #{shortName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="net.vipmro.user.resource.domain.model.po.Goods">
+    update goods
+    set cate_id = #{cateId,jdbcType=INTEGER},
+      brand_id = #{brandId,jdbcType=INTEGER},
+      goods_no = #{goodsNo,jdbcType=VARCHAR},
+      buy_no = #{buyNo,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      model = #{model,jdbcType=VARCHAR},
+      measure = #{measure,jdbcType=VARCHAR},
+      weight = #{weight,jdbcType=DECIMAL},
+      market_price = #{marketPrice,jdbcType=DECIMAL},
+      keywords = #{keywords,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      is_new = #{isNew,jdbcType=BIT},
+      is_hot = #{isHot,jdbcType=TINYINT},
+      order_sn = #{orderSn,jdbcType=INTEGER},
+      status = #{status,jdbcType=CHAR},
+      create_user_id = #{createUserId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_user_id = #{modifyUserId,jdbcType=INTEGER},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      series = #{series,jdbcType=VARCHAR},
+      third_key = #{thirdKey,jdbcType=INTEGER},
+      is_manual = #{isManual,jdbcType=CHAR},
+      syn_code = #{synCode,jdbcType=VARCHAR},
+      spu_id = #{spuId,jdbcType=BIGINT},
+      remark = #{remark,jdbcType=VARCHAR},
+      package_num = #{packageNum,jdbcType=VARCHAR},
+      size = #{size,jdbcType=VARCHAR},
+      cubage = #{cubage,jdbcType=DECIMAL},
+      bar_code = #{barCode,jdbcType=VARCHAR},
+      second_cate_id = #{secondCateId,jdbcType=VARCHAR},
+      series_group = #{seriesGroup,jdbcType=VARCHAR},
+      product_area = #{productArea,jdbcType=VARCHAR},
+      manufacturer_id = #{manufacturerId,jdbcType=INTEGER},
+      is_effectived = #{isEffectived,jdbcType=TINYINT},
+      syn_code_ez = #{synCodeEz,jdbcType=VARCHAR},
+      short_name = #{shortName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, cate_id, brand_id, goods_no, buy_no, title, model, measure, weight, market_price, 
+    keywords, image, is_new, is_hot, order_sn, status, create_user_id, create_time, modify_user_id, 
+    modify_time, series, third_key, is_manual, syn_code, spu_id, remark, package_num, 
+    size, cubage, bar_code, second_cate_id, series_group, product_area, manufacturer_id, 
+    is_effectived, syn_code_ez, short_name
+    from goods
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, cate_id, brand_id, goods_no, buy_no, title, model, measure, weight, market_price, 
+    keywords, image, is_new, is_hot, order_sn, status, create_user_id, create_time, modify_user_id, 
+    modify_time, series, third_key, is_manual, syn_code, spu_id, remark, package_num, 
+    size, cubage, bar_code, second_cate_id, series_group, product_area, manufacturer_id, 
+    is_effectived, syn_code_ez, short_name
+    from goods
+  </select>
+  <select id="selectByGoodsNo" resultMap="BaseResultMap">
+    select id, cate_id, brand_id, goods_no, buy_no, title, model, measure, weight, market_price,
+    keywords, image, is_new, is_hot, order_sn, status, create_user_id, create_time, modify_user_id,
+    modify_time, series, third_key, is_manual, syn_code, spu_id, remark, package_num,
+    size, cubage, bar_code, second_cate_id, series_group, product_area, manufacturer_id,
+    is_effectived, syn_code_ez, short_name
+    from goods
+  where goods.goods_no=#{goodsNo}
+  </select>
+</mapper>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.vipmro.user.resource.infrastructure.mapper.BrandMapper">
+  <resultMap id="BaseResultMap" type="net.vipmro.user.resource.domain.model.po.Brand">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name_cn" jdbcType="VARCHAR" property="nameCn" />
+    <result column="name_en" jdbcType="VARCHAR" property="nameEn" />
+    <result column="logo" jdbcType="VARCHAR" property="logo" />
+    <result column="mark" jdbcType="VARCHAR" property="mark" />
+    <result column="maker" jdbcType="VARCHAR" property="maker" />
+    <result column="make_date" jdbcType="DATE" property="makeDate" />
+    <result column="web" jdbcType="VARCHAR" property="web" />
+    <result column="type" jdbcType="CHAR" property="type" />
+    <result column="order_sn" jdbcType="INTEGER" property="orderSn" />
+    <result column="tips" jdbcType="VARCHAR" property="tips" />
+    <result column="country_id" jdbcType="INTEGER" property="countryId" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="create_user_id" jdbcType="INTEGER" property="createUserId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_user_id" jdbcType="INTEGER" property="modifyUserId" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="qq" jdbcType="VARCHAR" property="qq" />
+    <result column="telphone" jdbcType="VARCHAR" property="telphone" />
+    <result column="has_goods" jdbcType="TINYINT" property="hasGoods" />
+    <result column="staff_id" jdbcType="INTEGER" property="staffId" />
+    <result column="is_zc" jdbcType="TINYINT" property="isZc" />
+    <result column="zc_price_base" jdbcType="DECIMAL" property="zcPriceBase" />
+    <result column="is_injected" jdbcType="TINYINT" property="isInjected" />
+    <result column="injected_time" jdbcType="TIMESTAMP" property="injectedTime" />
+    <result column="nature" jdbcType="TINYINT" property="nature" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from brand
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="net.vipmro.user.resource.domain.model.po.Brand">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into brand (name_cn, name_en, logo, 
+      mark, maker, make_date, 
+      web, type, order_sn, tips, 
+      country_id, status, create_user_id, 
+      create_time, modify_user_id, modify_time, 
+      qq, telphone, has_goods, 
+      staff_id, is_zc, zc_price_base, 
+      is_injected, injected_time, nature
+      )
+    values (#{nameCn,jdbcType=VARCHAR}, #{nameEn,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, 
+      #{mark,jdbcType=VARCHAR}, #{maker,jdbcType=VARCHAR}, #{makeDate,jdbcType=DATE}, 
+      #{web,jdbcType=VARCHAR}, #{type,jdbcType=CHAR}, #{orderSn,jdbcType=INTEGER}, #{tips,jdbcType=VARCHAR}, 
+      #{countryId,jdbcType=INTEGER}, #{status,jdbcType=CHAR}, #{createUserId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyUserId,jdbcType=INTEGER}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{qq,jdbcType=VARCHAR}, #{telphone,jdbcType=VARCHAR}, #{hasGoods,jdbcType=TINYINT}, 
+      #{staffId,jdbcType=INTEGER}, #{isZc,jdbcType=TINYINT}, #{zcPriceBase,jdbcType=DECIMAL}, 
+      #{isInjected,jdbcType=TINYINT}, #{injectedTime,jdbcType=TIMESTAMP}, #{nature,jdbcType=TINYINT}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="net.vipmro.user.resource.domain.model.po.Brand">
+    update brand
+    set name_cn = #{nameCn,jdbcType=VARCHAR},
+      name_en = #{nameEn,jdbcType=VARCHAR},
+      logo = #{logo,jdbcType=VARCHAR},
+      mark = #{mark,jdbcType=VARCHAR},
+      maker = #{maker,jdbcType=VARCHAR},
+      make_date = #{makeDate,jdbcType=DATE},
+      web = #{web,jdbcType=VARCHAR},
+      type = #{type,jdbcType=CHAR},
+      order_sn = #{orderSn,jdbcType=INTEGER},
+      tips = #{tips,jdbcType=VARCHAR},
+      country_id = #{countryId,jdbcType=INTEGER},
+      status = #{status,jdbcType=CHAR},
+      create_user_id = #{createUserId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_user_id = #{modifyUserId,jdbcType=INTEGER},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      qq = #{qq,jdbcType=VARCHAR},
+      telphone = #{telphone,jdbcType=VARCHAR},
+      has_goods = #{hasGoods,jdbcType=TINYINT},
+      staff_id = #{staffId,jdbcType=INTEGER},
+      is_zc = #{isZc,jdbcType=TINYINT},
+      zc_price_base = #{zcPriceBase,jdbcType=DECIMAL},
+      is_injected = #{isInjected,jdbcType=TINYINT},
+      injected_time = #{injectedTime,jdbcType=TIMESTAMP},
+      nature = #{nature,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name_cn, name_en, logo, mark, maker, make_date, web, type, order_sn, tips, 
+    country_id, status, create_user_id, create_time, modify_user_id, modify_time, qq, 
+    telphone, has_goods, staff_id, is_zc, zc_price_base, is_injected, injected_time, 
+    nature
+    from brand
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name_cn, name_en, logo, mark, maker, make_date, web, type, order_sn, tips, 
+    country_id, status, create_user_id, create_time, modify_user_id, modify_time, qq, 
+    telphone, has_goods, staff_id, is_zc, zc_price_base, is_injected, injected_time, 
+    nature
+    from brand
+  </select>
+</mapper>

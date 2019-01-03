@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.vipmro.user.resource.infrastructure.mapper.DealerMapper">
+  <resultMap id="BaseResultMap" type="net.vipmro.user.resource.domain.model.po.Dealer">
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="dealer_name" jdbcType="VARCHAR" property="dealerName"/>
+    <result column="logo" jdbcType="VARCHAR" property="logo"/>
+    <result column="telephone" jdbcType="VARCHAR" property="telephone"/>
+    <result column="telephone_secret" jdbcType="VARCHAR" property="telephoneSecret"/>
+    <result column="fax" jdbcType="VARCHAR" property="fax"/>
+    <result column="country_id" jdbcType="INTEGER" property="countryId"/>
+    <result column="province_id" jdbcType="INTEGER" property="provinceId"/>
+    <result column="city_id" jdbcType="INTEGER" property="cityId"/>
+    <result column="area_id" jdbcType="INTEGER" property="areaId"/>
+    <result column="address" jdbcType="VARCHAR" property="address"/>
+    <result column="linkman" jdbcType="VARCHAR" property="linkman"/>
+    <result column="link_tel" jdbcType="VARCHAR" property="linkTel"/>
+    <result column="link_tel_secret" jdbcType="VARCHAR" property="linkTelSecret"/>
+    <result column="qq" jdbcType="BIGINT" property="qq"/>
+    <result column="lng" jdbcType="VARCHAR" property="lng"/>
+    <result column="lat" jdbcType="VARCHAR" property="lat"/>
+    <result column="check_status" jdbcType="CHAR" property="checkStatus"/>
+    <result column="check_time" jdbcType="TIMESTAMP" property="checkTime"/>
+    <result column="check_user_id" jdbcType="INTEGER" property="checkUserId"/>
+    <result column="reject_reason" jdbcType="VARCHAR" property="rejectReason"/>
+    <result column="rank" jdbcType="INTEGER" property="rank"/>
+    <result column="rank_score" jdbcType="INTEGER" property="rankScore"/>
+    <result column="score" jdbcType="INTEGER" property="score"/>
+    <result column="cash" jdbcType="INTEGER" property="cash"/>
+    <result column="cash_valid_date" jdbcType="DATE" property="cashValidDate"/>
+    <result column="dealer_type" jdbcType="CHAR" property="dealerType"/>
+    <result column="authorize_date" jdbcType="DATE" property="authorizeDate"/>
+    <result column="status" jdbcType="CHAR" property="status"/>
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+    <result column="modify_user_id" jdbcType="INTEGER" property="modifyUserId"/>
+    <result column="order_sn" jdbcType="INTEGER" property="orderSn"/>
+    <result column="logistics_temp_model" jdbcType="CHAR" property="logisticsTempModel"/>
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    <result column="email" jdbcType="VARCHAR" property="email"/>
+    <result column="short_name" jdbcType="VARCHAR" property="shortName"/>
+    <result column="deal_rate" jdbcType="TINYINT" property="dealRate"/>
+    <result column="is_show" jdbcType="CHAR" property="isShow"/>
+    <result column="cooperation_mode" jdbcType="VARCHAR" property="cooperationMode"/>
+    <result column="order_handle" jdbcType="VARCHAR" property="orderHandle"/>
+    <result column="profit_model" jdbcType="VARCHAR" property="profitModel"/>
+    <result column="weixin_id" jdbcType="INTEGER" property="weixinId"/>
+    <result column="crm_costomer_id" jdbcType="INTEGER" property="crmCostomerId"/>
+    <result column="is_manual" jdbcType="CHAR" property="isManual"/>
+    <result column="gender" jdbcType="CHAR" property="gender"/>
+    <result column="birthday" jdbcType="TIMESTAMP" property="birthday"/>
+    <result column="shop_type" jdbcType="INTEGER" property="shopType"/>
+    <result column="shop_name" jdbcType="VARCHAR" property="shopName"/>
+    <result column="alias" jdbcType="VARCHAR" property="alias"/>
+    <result column="operate_scope" jdbcType="VARCHAR" property="operateScope"/>
+    <result column="reg_channel" jdbcType="INTEGER" property="regChannel"/>
+    <result column="check_fail_reason" jdbcType="VARCHAR" property="checkFailReason"/>
+    <result column="sale_customer_group" jdbcType="SMALLINT" property="saleCustomerGroup"/>
+    <result column="balance" jdbcType="DECIMAL" property="balance"/>
+    <result column="open_id" jdbcType="VARCHAR" property="openId"/>
+    <result column="cashback" jdbcType="DECIMAL" property="cashback"/>
+    <result column="bean" jdbcType="INTEGER" property="bean"/>
+    <result column="source_type" jdbcType="VARCHAR" property="sourceType"/>
+    <result column="saas_open_id" jdbcType="VARCHAR" property="saasOpenId"/>
+    <result column="invitation" jdbcType="VARCHAR" property="invitation"/>
+    <result column="reg_source" jdbcType="INTEGER" property="regSource"/>
+    <result column="last_recharge_time" jdbcType="TIMESTAMP" property="lastRechargeTime"/>
+    <result column="last_recharge_bean" jdbcType="INTEGER" property="lastRechargeBean"/>
+    <result column="allot_type" jdbcType="TINYINT" property="allotType"/>
+    <result column="allot_reason" jdbcType="VARCHAR" property="allotReason"/>
+    <result column="allot_time" jdbcType="TIMESTAMP" property="allotTime"/>
+    <result column="register_platform" jdbcType="TINYINT" property="registerPlatform"/>
+    <result column="exchange_limit" jdbcType="INTEGER" property="exchangeLimit"/>
+    <result column="used_refund_num" jdbcType="TINYINT" property="usedRefundNum"/>
+    <result column="exchange_coupon_num" jdbcType="TINYINT" property="exchangeCouponNum"/>
+    <result column="mini_open_id" jdbcType="VARCHAR" property="miniOpenId"/>
+    <result column="register_no" jdbcType="VARCHAR" property="registerNo"/>
+    <result column="goods_return" jdbcType="DECIMAL" property="goodsReturn"/>
+    <result column="dealer_id_of_seller" jdbcType="BIGINT" property="dealerIdOfSeller"/>
+    <result column="syn_time" jdbcType="TIMESTAMP" property="synTime"/>
+    <result column="syn_id" jdbcType="BIGINT" property="synId"/>
+    <result column="is_test_account" jdbcType="VARCHAR" property="isTestAccount"/>
+    <result column="parent_id" jdbcType="INTEGER" property="parentId"/>
+    <result column="search_history_time" jdbcType="TIMESTAMP" property="searchHistoryTime"/>
+    <result column="invited_dealer_id" jdbcType="INTEGER" property="invitedDealerId"/>
+    <result column="draft_balance" jdbcType="DECIMAL" property="draftBalance"/>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dealer
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="net.vipmro.user.resource.domain.model.po.Dealer">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into dealer (dealer_name, logo, telephone, 
+      telephone_secret, fax, country_id, 
+      province_id, city_id, area_id, 
+      address, linkman, link_tel, 
+      link_tel_secret, qq, lng, 
+      lat, check_status, check_time, 
+      check_user_id, reject_reason, rank, 
+      rank_score, score, cash, 
+      cash_valid_date, dealer_type, authorize_date, 
+      status, modify_time, modify_user_id, 
+      order_sn, logistics_temp_model, create_time, 
+      email, short_name, deal_rate, 
+      is_show, cooperation_mode, order_handle, 
+      profit_model, weixin_id, crm_costomer_id, 
+      is_manual, gender, birthday, 
+      shop_type, shop_name, alias, 
+      operate_scope, reg_channel, check_fail_reason, 
+      sale_customer_group, balance, open_id, 
+      cashback, bean, source_type, 
+      saas_open_id, invitation, reg_source, 
+      last_recharge_time, last_recharge_bean, allot_type, 
+      allot_reason, allot_time, register_platform, 
+      exchange_limit, used_refund_num, exchange_coupon_num, 
+      mini_open_id, register_no,
+      goods_return, dealer_id_of_seller, syn_time, 
+      syn_id, is_test_account, parent_id, 
+      search_history_time, invited_dealer_id, draft_balance
+      )
+    values (#{dealerName,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
+      #{telephoneSecret,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, #{countryId,jdbcType=INTEGER}, 
+      #{provinceId,jdbcType=INTEGER}, #{cityId,jdbcType=INTEGER}, #{areaId,jdbcType=INTEGER}, 
+      #{address,jdbcType=VARCHAR}, #{linkman,jdbcType=VARCHAR}, #{linkTel,jdbcType=VARCHAR}, 
+      #{linkTelSecret,jdbcType=VARCHAR}, #{qq,jdbcType=BIGINT}, #{lng,jdbcType=VARCHAR}, 
+      #{lat,jdbcType=VARCHAR}, #{checkStatus,jdbcType=CHAR}, #{checkTime,jdbcType=TIMESTAMP}, 
+      #{checkUserId,jdbcType=INTEGER}, #{rejectReason,jdbcType=VARCHAR}, #{rank,jdbcType=INTEGER}, 
+      #{rankScore,jdbcType=INTEGER}, #{score,jdbcType=INTEGER}, #{cash,jdbcType=INTEGER}, 
+      #{cashValidDate,jdbcType=DATE}, #{dealerType,jdbcType=CHAR}, #{authorizeDate,jdbcType=DATE}, 
+      #{status,jdbcType=CHAR}, #{modifyTime,jdbcType=TIMESTAMP}, #{modifyUserId,jdbcType=INTEGER}, 
+      #{orderSn,jdbcType=INTEGER}, #{logisticsTempModel,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{email,jdbcType=VARCHAR}, #{shortName,jdbcType=VARCHAR}, #{dealRate,jdbcType=TINYINT}, 
+      #{isShow,jdbcType=CHAR}, #{cooperationMode,jdbcType=VARCHAR}, #{orderHandle,jdbcType=VARCHAR}, 
+      #{profitModel,jdbcType=VARCHAR}, #{weixinId,jdbcType=INTEGER}, #{crmCostomerId,jdbcType=INTEGER}, 
+      #{isManual,jdbcType=CHAR}, #{gender,jdbcType=CHAR}, #{birthday,jdbcType=TIMESTAMP}, 
+      #{shopType,jdbcType=INTEGER}, #{shopName,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}, 
+      #{operateScope,jdbcType=VARCHAR}, #{regChannel,jdbcType=INTEGER}, #{checkFailReason,jdbcType=VARCHAR}, 
+      #{saleCustomerGroup,jdbcType=SMALLINT}, #{balance,jdbcType=DECIMAL}, #{openId,jdbcType=VARCHAR}, 
+      #{cashback,jdbcType=DECIMAL}, #{bean,jdbcType=INTEGER}, #{sourceType,jdbcType=VARCHAR}, 
+      #{saasOpenId,jdbcType=VARCHAR}, #{invitation,jdbcType=VARCHAR}, #{regSource,jdbcType=INTEGER}, 
+      #{lastRechargeTime,jdbcType=TIMESTAMP}, #{lastRechargeBean,jdbcType=INTEGER}, #{allotType,jdbcType=TINYINT}, 
+      #{allotReason,jdbcType=VARCHAR}, #{allotTime,jdbcType=TIMESTAMP}, #{registerPlatform,jdbcType=TINYINT}, 
+      #{exchangeLimit,jdbcType=INTEGER}, #{usedRefundNum,jdbcType=TINYINT}, #{exchangeCouponNum,jdbcType=TINYINT}, 
+      #{miniOpenId,jdbcType=VARCHAR}, #{registerNo,jdbcType=VARCHAR},
+      #{goodsReturn,jdbcType=DECIMAL}, #{dealerIdOfSeller,jdbcType=BIGINT}, #{synTime,jdbcType=TIMESTAMP}, 
+      #{synId,jdbcType=BIGINT}, #{isTestAccount,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, 
+      #{searchHistoryTime,jdbcType=TIMESTAMP}, #{invitedDealerId,jdbcType=INTEGER}, #{draftBalance,jdbcType=DECIMAL}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="net.vipmro.user.resource.domain.model.po.Dealer">
+    update dealer
+    set dealer_name = #{dealerName,jdbcType=VARCHAR},
+      logo = #{logo,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      telephone_secret = #{telephoneSecret,jdbcType=VARCHAR},
+      fax = #{fax,jdbcType=VARCHAR},
+      country_id = #{countryId,jdbcType=INTEGER},
+      province_id = #{provinceId,jdbcType=INTEGER},
+      city_id = #{cityId,jdbcType=INTEGER},
+      area_id = #{areaId,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      linkman = #{linkman,jdbcType=VARCHAR},
+      link_tel = #{linkTel,jdbcType=VARCHAR},
+      link_tel_secret = #{linkTelSecret,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=BIGINT},
+      lng = #{lng,jdbcType=VARCHAR},
+      lat = #{lat,jdbcType=VARCHAR},
+      check_status = #{checkStatus,jdbcType=CHAR},
+      check_time = #{checkTime,jdbcType=TIMESTAMP},
+      check_user_id = #{checkUserId,jdbcType=INTEGER},
+      reject_reason = #{rejectReason,jdbcType=VARCHAR},
+      rank = #{rank,jdbcType=INTEGER},
+      rank_score = #{rankScore,jdbcType=INTEGER},
+      score = #{score,jdbcType=INTEGER},
+      cash = #{cash,jdbcType=INTEGER},
+      cash_valid_date = #{cashValidDate,jdbcType=DATE},
+      dealer_type = #{dealerType,jdbcType=CHAR},
+      authorize_date = #{authorizeDate,jdbcType=DATE},
+      status = #{status,jdbcType=CHAR},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      modify_user_id = #{modifyUserId,jdbcType=INTEGER},
+      order_sn = #{orderSn,jdbcType=INTEGER},
+      logistics_temp_model = #{logisticsTempModel,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      email = #{email,jdbcType=VARCHAR},
+      short_name = #{shortName,jdbcType=VARCHAR},
+      deal_rate = #{dealRate,jdbcType=TINYINT},
+      is_show = #{isShow,jdbcType=CHAR},
+      cooperation_mode = #{cooperationMode,jdbcType=VARCHAR},
+      order_handle = #{orderHandle,jdbcType=VARCHAR},
+      profit_model = #{profitModel,jdbcType=VARCHAR},
+      weixin_id = #{weixinId,jdbcType=INTEGER},
+      crm_costomer_id = #{crmCostomerId,jdbcType=INTEGER},
+      is_manual = #{isManual,jdbcType=CHAR},
+      gender = #{gender,jdbcType=CHAR},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      shop_type = #{shopType,jdbcType=INTEGER},
+      shop_name = #{shopName,jdbcType=VARCHAR},
+      alias = #{alias,jdbcType=VARCHAR},
+      operate_scope = #{operateScope,jdbcType=VARCHAR},
+      reg_channel = #{regChannel,jdbcType=INTEGER},
+      check_fail_reason = #{checkFailReason,jdbcType=VARCHAR},
+      sale_customer_group = #{saleCustomerGroup,jdbcType=SMALLINT},
+      balance = #{balance,jdbcType=DECIMAL},
+      open_id = #{openId,jdbcType=VARCHAR},
+      cashback = #{cashback,jdbcType=DECIMAL},
+      bean = #{bean,jdbcType=INTEGER},
+      source_type = #{sourceType,jdbcType=VARCHAR},
+      saas_open_id = #{saasOpenId,jdbcType=VARCHAR},
+      invitation = #{invitation,jdbcType=VARCHAR},
+      reg_source = #{regSource,jdbcType=INTEGER},
+      last_recharge_time = #{lastRechargeTime,jdbcType=TIMESTAMP},
+      last_recharge_bean = #{lastRechargeBean,jdbcType=INTEGER},
+      allot_type = #{allotType,jdbcType=TINYINT},
+      allot_reason = #{allotReason,jdbcType=VARCHAR},
+      allot_time = #{allotTime,jdbcType=TIMESTAMP},
+      register_platform = #{registerPlatform,jdbcType=TINYINT},
+      exchange_limit = #{exchangeLimit,jdbcType=INTEGER},
+      used_refund_num = #{usedRefundNum,jdbcType=TINYINT},
+      exchange_coupon_num = #{exchangeCouponNum,jdbcType=TINYINT},
+      mini_open_id = #{miniOpenId,jdbcType=VARCHAR},
+      register_no = #{registerNo,jdbcType=VARCHAR},
+      goods_return = #{goodsReturn,jdbcType=DECIMAL},
+      dealer_id_of_seller = #{dealerIdOfSeller,jdbcType=BIGINT},
+      syn_time = #{synTime,jdbcType=TIMESTAMP},
+      syn_id = #{synId,jdbcType=BIGINT},
+      is_test_account = #{isTestAccount,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      search_history_time = #{searchHistoryTime,jdbcType=TIMESTAMP},
+      invited_dealer_id = #{invitedDealerId,jdbcType=INTEGER},
+      draft_balance = #{draftBalance,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, dealer_name, logo, telephone, telephone_secret, fax, country_id, province_id, 
+    city_id, area_id, address, linkman, link_tel, link_tel_secret, qq, lng, lat, check_status, 
+    check_time, check_user_id, reject_reason, rank, rank_score, score, cash, cash_valid_date, 
+    dealer_type, authorize_date, status, modify_time, modify_user_id, order_sn, logistics_temp_model, 
+    create_time, email, short_name, deal_rate, is_show, cooperation_mode, order_handle, 
+    profit_model, weixin_id, crm_costomer_id, is_manual, gender, birthday, shop_type, 
+    shop_name, alias, operate_scope, reg_channel, check_fail_reason, sale_customer_group, 
+    balance, open_id, cashback, bean, source_type, saas_open_id, invitation, reg_source, 
+    last_recharge_time, last_recharge_bean, allot_type, allot_reason, allot_time, register_platform, 
+    exchange_limit, used_refund_num, exchange_coupon_num, mini_open_id, register_no, 
+    goods_return, dealer_id_of_seller, syn_time, syn_id, is_test_account,
+    parent_id, search_history_time, invited_dealer_id, draft_balance
+    from dealer
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, dealer_name, logo, telephone, telephone_secret, fax, country_id, province_id, 
+    city_id, area_id, address, linkman, link_tel, link_tel_secret, qq, lng, lat, check_status, 
+    check_time, check_user_id, reject_reason, rank, rank_score, score, cash, cash_valid_date, 
+    dealer_type, authorize_date, status, modify_time, modify_user_id, order_sn, logistics_temp_model, 
+    create_time, email, short_name, deal_rate, is_show, cooperation_mode, order_handle, 
+    profit_model, weixin_id, crm_costomer_id, is_manual, gender, birthday, shop_type, 
+    shop_name, alias, operate_scope, reg_channel, check_fail_reason, sale_customer_group, 
+    balance, open_id, cashback, bean, source_type, saas_open_id, invitation, reg_source, 
+    last_recharge_time, last_recharge_bean, allot_type, allot_reason, allot_time, register_platform, 
+    exchange_limit, used_refund_num, exchange_coupon_num, mini_open_id, register_no, 
+    goods_return, dealer_id_of_seller, syn_time, syn_id, is_test_account,
+    parent_id, search_history_time, invited_dealer_id, draft_balance
+    from dealer
+  </select>
+</mapper>

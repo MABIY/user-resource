@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.vipmro.user.resource.infrastructure.mapper.SellerGoodsMapper">
+  <resultMap id="BaseResultMap" type="net.vipmro.user.resource.domain.model.po.SellerGoods">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="goods_id" jdbcType="BIGINT" property="goodsId" />
+    <result column="goods_no" jdbcType="VARCHAR" property="goodsNo" />
+    <result column="seller_id" jdbcType="INTEGER" property="sellerId" />
+    <result column="buy_no" jdbcType="VARCHAR" property="buyNo" />
+    <result column="stock" jdbcType="INTEGER" property="stock" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="cost_price" jdbcType="DECIMAL" property="costPrice" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="shipping_city_id" jdbcType="INTEGER" property="shippingCityId" />
+    <result column="shipping_city_name" jdbcType="VARCHAR" property="shippingCityName" />
+    <result column="is_freepost" jdbcType="CHAR" property="isFreepost" />
+    <result column="fare_temp_id" jdbcType="INTEGER" property="fareTempId" />
+    <result column="fixed_up_time" jdbcType="TIMESTAMP" property="fixedUpTime" />
+    <result column="fixed_down_time" jdbcType="TIMESTAMP" property="fixedDownTime" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_user_id" jdbcType="INTEGER" property="createUserId" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="modify_user_id" jdbcType="INTEGER" property="modifyUserId" />
+    <result column="sales_volume" jdbcType="INTEGER" property="salesVolume" />
+    <result column="sales_price_volume" jdbcType="DECIMAL" property="salesPriceVolume" />
+    <result column="coupon_amount" jdbcType="INTEGER" property="couponAmount" />
+    <result column="show_amount" jdbcType="DECIMAL" property="showAmount" />
+    <result column="is_recomm" jdbcType="CHAR" property="isRecomm" />
+    <result column="order_sn" jdbcType="INTEGER" property="orderSn" />
+    <result column="is_show" jdbcType="VARCHAR" property="isShow" />
+    <result column="order_quantity" jdbcType="INTEGER" property="orderQuantity" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="is_fullcut" jdbcType="SMALLINT" property="isFullcut" />
+    <result column="is_rate" jdbcType="SMALLINT" property="isRate" />
+    <result column="is_rebates" jdbcType="SMALLINT" property="isRebates" />
+    <result column="is_sale" jdbcType="SMALLINT" property="isSale" />
+    <result column="sku_unit" jdbcType="VARCHAR" property="skuUnit" />
+    <result column="syn_code" jdbcType="VARCHAR" property="synCode" />
+    <result column="batch_quantity" jdbcType="INTEGER" property="batchQuantity" />
+    <result column="sale_price" jdbcType="DECIMAL" property="salePrice" />
+    <result column="rate" jdbcType="DECIMAL" property="rate" />
+    <result column="channel" jdbcType="TINYINT" property="channel" />
+    <result column="seller_cate_id" jdbcType="BIGINT" property="sellerCateId" />
+    <result column="is_fullgive" jdbcType="SMALLINT" property="isFullgive" />
+    <result column="is_groupon" jdbcType="SMALLINT" property="isGroupon" />
+    <result column="is_bean" jdbcType="SMALLINT" property="isBean" />
+    <result column="bean_rate" jdbcType="DECIMAL" property="beanRate" />
+    <result column="is_promote" jdbcType="TINYINT" property="isPromote" />
+    <result column="logistics_temp_id" jdbcType="INTEGER" property="logisticsTempId" />
+    <result column="docking_discount" jdbcType="DECIMAL" property="dockingDiscount" />
+    <result column="min_price" jdbcType="DECIMAL" property="minPrice" />
+    <result column="update_by" jdbcType="INTEGER" property="updateBy" />
+    <result column="update_at" jdbcType="TIMESTAMP" property="updateAt" />
+    <result column="is_support_return" jdbcType="TINYINT" property="isSupportReturn" />
+    <result column="temp_flg" jdbcType="TINYINT" property="tempFlg" />
+    <result column="is_convert_show" jdbcType="TINYINT" property="isConvertShow" />
+    <result column="convert_num" jdbcType="DECIMAL" property="convertNum" />
+    <result column="convert_unit" jdbcType="VARCHAR" property="convertUnit" />
+    <result column="delivery_time" jdbcType="INTEGER" property="deliveryTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from seller_goods
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="net.vipmro.user.resource.domain.model.po.SellerGoods">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into seller_goods (goods_id, goods_no, seller_id, 
+      buy_no, stock, price, 
+      cost_price, goods_name, shipping_city_id, 
+      shipping_city_name, is_freepost, fare_temp_id, 
+      fixed_up_time, fixed_down_time, status, 
+      create_time, create_user_id, modify_time, 
+      modify_user_id, sales_volume, sales_price_volume, 
+      coupon_amount, show_amount, is_recomm, 
+      order_sn, is_show, order_quantity, 
+      remark, is_fullcut, is_rate, 
+      is_rebates, is_sale, sku_unit, 
+      syn_code, batch_quantity, sale_price, 
+      rate, channel, seller_cate_id, 
+      is_fullgive, is_groupon, is_bean, 
+      bean_rate, is_promote, logistics_temp_id, 
+      docking_discount, min_price, update_by, 
+      update_at, is_support_return, temp_flg, 
+      is_convert_show, convert_num, convert_unit, 
+      delivery_time)
+    values (#{goodsId,jdbcType=BIGINT}, #{goodsNo,jdbcType=VARCHAR}, #{sellerId,jdbcType=INTEGER}, 
+      #{buyNo,jdbcType=VARCHAR}, #{stock,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, 
+      #{costPrice,jdbcType=DECIMAL}, #{goodsName,jdbcType=VARCHAR}, #{shippingCityId,jdbcType=INTEGER}, 
+      #{shippingCityName,jdbcType=VARCHAR}, #{isFreepost,jdbcType=CHAR}, #{fareTempId,jdbcType=INTEGER}, 
+      #{fixedUpTime,jdbcType=TIMESTAMP}, #{fixedDownTime,jdbcType=TIMESTAMP}, #{status,jdbcType=CHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{createUserId,jdbcType=INTEGER}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{modifyUserId,jdbcType=INTEGER}, #{salesVolume,jdbcType=INTEGER}, #{salesPriceVolume,jdbcType=DECIMAL}, 
+      #{couponAmount,jdbcType=INTEGER}, #{showAmount,jdbcType=DECIMAL}, #{isRecomm,jdbcType=CHAR}, 
+      #{orderSn,jdbcType=INTEGER}, #{isShow,jdbcType=VARCHAR}, #{orderQuantity,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{isFullcut,jdbcType=SMALLINT}, #{isRate,jdbcType=SMALLINT}, 
+      #{isRebates,jdbcType=SMALLINT}, #{isSale,jdbcType=SMALLINT}, #{skuUnit,jdbcType=VARCHAR}, 
+      #{synCode,jdbcType=VARCHAR}, #{batchQuantity,jdbcType=INTEGER}, #{salePrice,jdbcType=DECIMAL}, 
+      #{rate,jdbcType=DECIMAL}, #{channel,jdbcType=TINYINT}, #{sellerCateId,jdbcType=BIGINT}, 
+      #{isFullgive,jdbcType=SMALLINT}, #{isGroupon,jdbcType=SMALLINT}, #{isBean,jdbcType=SMALLINT}, 
+      #{beanRate,jdbcType=DECIMAL}, #{isPromote,jdbcType=TINYINT}, #{logisticsTempId,jdbcType=INTEGER}, 
+      #{dockingDiscount,jdbcType=DECIMAL}, #{minPrice,jdbcType=DECIMAL}, #{updateBy,jdbcType=INTEGER}, 
+      #{updateAt,jdbcType=TIMESTAMP}, #{isSupportReturn,jdbcType=TINYINT}, #{tempFlg,jdbcType=TINYINT}, 
+      #{isConvertShow,jdbcType=TINYINT}, #{convertNum,jdbcType=DECIMAL}, #{convertUnit,jdbcType=VARCHAR}, 
+      #{deliveryTime,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="net.vipmro.user.resource.domain.model.po.SellerGoods">
+    update seller_goods
+    set goods_id = #{goodsId,jdbcType=BIGINT},
+      goods_no = #{goodsNo,jdbcType=VARCHAR},
+      seller_id = #{sellerId,jdbcType=INTEGER},
+      buy_no = #{buyNo,jdbcType=VARCHAR},
+      stock = #{stock,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      cost_price = #{costPrice,jdbcType=DECIMAL},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      shipping_city_id = #{shippingCityId,jdbcType=INTEGER},
+      shipping_city_name = #{shippingCityName,jdbcType=VARCHAR},
+      is_freepost = #{isFreepost,jdbcType=CHAR},
+      fare_temp_id = #{fareTempId,jdbcType=INTEGER},
+      fixed_up_time = #{fixedUpTime,jdbcType=TIMESTAMP},
+      fixed_down_time = #{fixedDownTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_user_id = #{createUserId,jdbcType=INTEGER},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      modify_user_id = #{modifyUserId,jdbcType=INTEGER},
+      sales_volume = #{salesVolume,jdbcType=INTEGER},
+      sales_price_volume = #{salesPriceVolume,jdbcType=DECIMAL},
+      coupon_amount = #{couponAmount,jdbcType=INTEGER},
+      show_amount = #{showAmount,jdbcType=DECIMAL},
+      is_recomm = #{isRecomm,jdbcType=CHAR},
+      order_sn = #{orderSn,jdbcType=INTEGER},
+      is_show = #{isShow,jdbcType=VARCHAR},
+      order_quantity = #{orderQuantity,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      is_fullcut = #{isFullcut,jdbcType=SMALLINT},
+      is_rate = #{isRate,jdbcType=SMALLINT},
+      is_rebates = #{isRebates,jdbcType=SMALLINT},
+      is_sale = #{isSale,jdbcType=SMALLINT},
+      sku_unit = #{skuUnit,jdbcType=VARCHAR},
+      syn_code = #{synCode,jdbcType=VARCHAR},
+      batch_quantity = #{batchQuantity,jdbcType=INTEGER},
+      sale_price = #{salePrice,jdbcType=DECIMAL},
+      rate = #{rate,jdbcType=DECIMAL},
+      channel = #{channel,jdbcType=TINYINT},
+      seller_cate_id = #{sellerCateId,jdbcType=BIGINT},
+      is_fullgive = #{isFullgive,jdbcType=SMALLINT},
+      is_groupon = #{isGroupon,jdbcType=SMALLINT},
+      is_bean = #{isBean,jdbcType=SMALLINT},
+      bean_rate = #{beanRate,jdbcType=DECIMAL},
+      is_promote = #{isPromote,jdbcType=TINYINT},
+      logistics_temp_id = #{logisticsTempId,jdbcType=INTEGER},
+      docking_discount = #{dockingDiscount,jdbcType=DECIMAL},
+      min_price = #{minPrice,jdbcType=DECIMAL},
+      update_by = #{updateBy,jdbcType=INTEGER},
+      update_at = #{updateAt,jdbcType=TIMESTAMP},
+      is_support_return = #{isSupportReturn,jdbcType=TINYINT},
+      temp_flg = #{tempFlg,jdbcType=TINYINT},
+      is_convert_show = #{isConvertShow,jdbcType=TINYINT},
+      convert_num = #{convertNum,jdbcType=DECIMAL},
+      convert_unit = #{convertUnit,jdbcType=VARCHAR},
+      delivery_time = #{deliveryTime,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, goods_id, goods_no, seller_id, buy_no, stock, price, cost_price, goods_name, 
+    shipping_city_id, shipping_city_name, is_freepost, fare_temp_id, fixed_up_time, fixed_down_time, 
+    status, create_time, create_user_id, modify_time, modify_user_id, sales_volume, sales_price_volume, 
+    coupon_amount, show_amount, is_recomm, order_sn, is_show, order_quantity, remark, 
+    is_fullcut, is_rate, is_rebates, is_sale, sku_unit, syn_code, batch_quantity, sale_price, 
+    rate, channel, seller_cate_id, is_fullgive, is_groupon, is_bean, bean_rate, is_promote, 
+    logistics_temp_id, docking_discount, min_price, update_by, update_at, is_support_return, 
+    temp_flg, is_convert_show, convert_num, convert_unit, delivery_time
+    from seller_goods
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, goods_id, goods_no, seller_id, buy_no, stock, price, cost_price, goods_name, 
+    shipping_city_id, shipping_city_name, is_freepost, fare_temp_id, fixed_up_time, fixed_down_time, 
+    status, create_time, create_user_id, modify_time, modify_user_id, sales_volume, sales_price_volume, 
+    coupon_amount, show_amount, is_recomm, order_sn, is_show, order_quantity, remark, 
+    is_fullcut, is_rate, is_rebates, is_sale, sku_unit, syn_code, batch_quantity, sale_price, 
+    rate, channel, seller_cate_id, is_fullgive, is_groupon, is_bean, bean_rate, is_promote, 
+    logistics_temp_id, docking_discount, min_price, update_by, update_at, is_support_return, 
+    temp_flg, is_convert_show, convert_num, convert_unit, delivery_time
+    from seller_goods
+  </select>
+    <select id="selectByGoodsNoAndStatusAndIsShowAndChannel" resultMap="BaseResultMap">
+    select id, goods_id, goods_no, seller_id, buy_no, stock, price, cost_price, goods_name,
+    shipping_city_id, shipping_city_name, is_freepost, fare_temp_id, fixed_up_time, fixed_down_time,
+    status, create_time, create_user_id, modify_time, modify_user_id, sales_volume, sales_price_volume,
+    coupon_amount, show_amount, is_recomm, order_sn, is_show, order_quantity, remark,
+    is_fullcut, is_rate, is_rebates, is_sale, sku_unit, syn_code, batch_quantity, sale_price,
+    rate, channel, seller_cate_id, is_fullgive, is_groupon, is_bean, bean_rate, is_promote,
+    logistics_temp_id, docking_discount, min_price, update_by, update_at, is_support_return,
+    temp_flg, is_convert_show, convert_num, convert_unit, delivery_time
+    from seller_goods
+    where goods_no=#{goodsNo} and status=#{status} and is_show =#{isShow} and channel = #{channel}
+  </select>
+
+</mapper>

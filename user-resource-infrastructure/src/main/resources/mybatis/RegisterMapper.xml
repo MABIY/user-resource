@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.vipmro.user.resource.infrastructure.mapper.RegisterMapper">
+  <resultMap id="BaseResultMap" type="net.vipmro.user.resource.domain.model.po.Register">
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+    <result column="password" jdbcType="VARCHAR" property="password"/>
+    <result column="dealer_id" jdbcType="INTEGER" property="dealerId"/>
+    <result column="position" jdbcType="VARCHAR" property="position"/>
+    <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+    <result column="mobile_secret" jdbcType="VARCHAR" property="mobileSecret"/>
+    <result column="email" jdbcType="VARCHAR" property="email"/>
+    <result column="register_time" jdbcType="TIMESTAMP" property="registerTime"/>
+    <result column="register_ip" jdbcType="VARCHAR" property="registerIp"/>
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime"/>
+    <result column="last_login_ip" jdbcType="VARCHAR" property="lastLoginIp"/>
+    <result column="status" jdbcType="CHAR" property="status"/>
+    <result column="is_login" jdbcType="CHAR" property="isLogin"/>
+    <result column="login_count" jdbcType="TINYINT" property="loginCount"/>
+    <result column="platform" jdbcType="VARCHAR" property="platform"/>
+    <result column="user_unique" jdbcType="VARCHAR" property="userUnique"/>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete
+    from register
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="net.vipmro.user.resource.domain.model.po.Register">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into register (user_name, password, dealer_id, 
+      position, mobile, mobile_secret, 
+      email, register_time, register_ip, 
+      last_login_time, last_login_ip, status, 
+      is_login, login_count, platform, 
+      user_unique)
+    values (#{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{dealerId,jdbcType=INTEGER}, 
+      #{position,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{mobileSecret,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{registerTime,jdbcType=TIMESTAMP}, #{registerIp,jdbcType=VARCHAR}, 
+      #{lastLoginTime,jdbcType=TIMESTAMP}, #{lastLoginIp,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, 
+      #{isLogin,jdbcType=CHAR}, #{loginCount,jdbcType=TINYINT}, #{platform,jdbcType=VARCHAR}, 
+      #{userUnique,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="net.vipmro.user.resource.domain.model.po.Register">
+    update register
+    set user_name       = #{userName,jdbcType=VARCHAR},
+        password        = #{password,jdbcType=VARCHAR},
+        dealer_id       = #{dealerId,jdbcType=INTEGER},
+        position        = #{position,jdbcType=VARCHAR},
+        mobile          = #{mobile,jdbcType=VARCHAR},
+        mobile_secret   = #{mobileSecret,jdbcType=VARCHAR},
+        email           = #{email,jdbcType=VARCHAR},
+        register_time   = #{registerTime,jdbcType=TIMESTAMP},
+        register_ip     = #{registerIp,jdbcType=VARCHAR},
+        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+        last_login_ip   = #{lastLoginIp,jdbcType=VARCHAR},
+        status          = #{status,jdbcType=CHAR},
+        is_login        = #{isLogin,jdbcType=CHAR},
+        login_count     = #{loginCount,jdbcType=TINYINT},
+        platform        = #{platform,jdbcType=VARCHAR},
+        user_unique     = #{userUnique,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id,
+           user_name,
+           password,
+           dealer_id,
+           position,
+           mobile,
+           mobile_secret,
+           email,
+           register_time,
+           register_ip,
+           last_login_time,
+           last_login_ip,
+           status,
+           is_login,
+           login_count,
+           platform,
+           user_unique
+    from register
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id,
+           user_name,
+           password,
+           dealer_id,
+           position,
+           mobile,
+           mobile_secret,
+           email,
+           register_time,
+           register_ip,
+           last_login_time,
+           last_login_ip,
+           status,
+           is_login,
+           login_count,
+           platform,
+           user_unique
+    from register
+  </select>
+  
+
+    <select id="selectByLoginNameandPasswordAndMobileSecret" resultMap="BaseResultMap">
+    select
+	    r.id,
+	    r.user_name,
+	    r.password,
+	    r.dealer_id,
+	    r.position,
+	    r.mobile,
+	    r.mobile_secret,
+	    r.email,
+	    r.register_time,
+	    r.register_ip,
+	    r.last_login_time,
+	    r.last_login_ip,
+	    r.status,
+	    r.is_login,
+	    r.login_count,
+	    r.platform,
+	    r.user_unique
+    from register r,
+         dealer d
+    where r.dealer_id = d.id
+	  and r.status = '1'
+	  and d.status = '1'
+	  and dealer_type = 2
+	  and (r.user_name = #{loginName} or r.mobile = #{loginName} or r.email = #{loginName} or
+	       trim(replace(r.mobile_secret, '\r\n', '')) = #{mobileSecret})
+	  and password = #{password}
+    group by d.id
+             limit 0,1
+  </select>
+	
+  <select id="selectByUserName" resultMap="BaseResultMap">
+    select r.id,
+           r.user_name,
+           r.password,
+           r.dealer_id,
+           r.position,
+           r.mobile,
+           r.mobile_secret,
+           r.email,
+           r.register_time,
+           r.register_ip,
+           r.last_login_time,
+           r.last_login_ip,
+           r.status,
+           r.is_login,
+           r.login_count,
+           r.platform,
+           r.user_unique
+    from register r,
+         dealer d
+    where r.dealer_id = d.id
+	  and r.status = '1'
+	  and d.status = '1'
+	  and dealer_type = 2
+	  and (r.user_name = #{loginName} or r.mobile = #{loginName} or r.email = #{loginName} or
+	       trim(replace(r.mobile_secret, '\r\n', '')) = #{mobileSecret})
+    group by d.id
+  </select>
+</mapper>

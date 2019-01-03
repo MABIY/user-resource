@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.vipmro.user.resource.infrastructure.mapper.CategoryMapper">
+  <resultMap id="BaseResultMap" type="net.vipmro.user.resource.domain.model.po.Category">
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="cate_no" jdbcType="VARCHAR" property="cateNo"/>
+    <result column="name" jdbcType="VARCHAR" property="name"/>
+    <result column="parent_id" jdbcType="INTEGER" property="parentId"/>
+    <result column="is_leaf" jdbcType="TINYINT" property="isLeaf"/>
+    <result column="icon" jdbcType="VARCHAR" property="icon"/>
+    <result column="brief" jdbcType="VARCHAR" property="brief"/>
+    <result column="status" jdbcType="CHAR" property="status"/>
+    <result column="create_user_id" jdbcType="INTEGER" property="createUserId"/>
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    <result column="modify_user_id" jdbcType="INTEGER" property="modifyUserId"/>
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+    <result column="has_goods" jdbcType="CHAR" property="hasGoods"/>
+    <result column="has_initial_goods" jdbcType="CHAR" property="hasInitialGoods"/>
+    <result column="short_name" jdbcType="VARCHAR" property="shortName"/>
+    <result column="order_sn" jdbcType="INTEGER" property="orderSn"/>
+    <result column="has_mall_goods" jdbcType="CHAR" property="hasMallGoods"/>
+    <result column="is_display" jdbcType="BIT" property="isDisplay"/>
+    <result column="app_image" jdbcType="VARCHAR" property="appImage"/>
+    <result column="app_url" jdbcType="VARCHAR" property="appUrl"/>
+    <result column="pc_url" jdbcType="VARCHAR" property="pcUrl"/>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from category
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="net.vipmro.user.resource.domain.model.po.Category">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into category (cate_no, name, parent_id, 
+      is_leaf, icon, brief, 
+      status, create_user_id, create_time, 
+      modify_user_id, modify_time, has_goods, 
+      has_initial_goods, short_name, order_sn, 
+      has_mall_goods, is_display, app_image, 
+      app_url, pc_url)
+    values (#{cateNo,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, 
+      #{isLeaf,jdbcType=TINYINT}, #{icon,jdbcType=VARCHAR}, #{brief,jdbcType=VARCHAR}, 
+      #{status,jdbcType=CHAR}, #{createUserId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyUserId,jdbcType=INTEGER}, #{modifyTime,jdbcType=TIMESTAMP}, #{hasGoods,jdbcType=CHAR}, 
+      #{hasInitialGoods,jdbcType=CHAR}, #{shortName,jdbcType=VARCHAR}, #{orderSn,jdbcType=INTEGER}, 
+      #{hasMallGoods,jdbcType=CHAR}, #{isDisplay,jdbcType=BIT}, #{appImage,jdbcType=VARCHAR}, 
+      #{appUrl,jdbcType=VARCHAR}, #{pcUrl,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="net.vipmro.user.resource.domain.model.po.Category">
+    update category
+    set cate_no = #{cateNo,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      is_leaf = #{isLeaf,jdbcType=TINYINT},
+      icon = #{icon,jdbcType=VARCHAR},
+      brief = #{brief,jdbcType=VARCHAR},
+      status = #{status,jdbcType=CHAR},
+      create_user_id = #{createUserId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_user_id = #{modifyUserId,jdbcType=INTEGER},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      has_goods = #{hasGoods,jdbcType=CHAR},
+      has_initial_goods = #{hasInitialGoods,jdbcType=CHAR},
+      short_name = #{shortName,jdbcType=VARCHAR},
+      order_sn = #{orderSn,jdbcType=INTEGER},
+      has_mall_goods = #{hasMallGoods,jdbcType=CHAR},
+      is_display = #{isDisplay,jdbcType=BIT},
+      app_image = #{appImage,jdbcType=VARCHAR},
+      app_url = #{appUrl,jdbcType=VARCHAR},
+      pc_url = #{pcUrl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+	<sql id="base_column">
+    id, cate_no, name, parent_id, is_leaf, icon, brief, status, create_user_id,
+    create_time, modify_user_id, modify_time, has_goods, has_initial_goods, short_name,
+    order_sn, has_mall_goods, is_display, app_image, app_url, pc_url
+    </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select <include refid="base_column"/>
+    from category
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select <include refid="base_column"/>
+    from category
+  </select>
+  <select id="selectWithState" resultMap="BaseResultMap">
+    select <include refid="base_column"/>
+    from category
+    where status= #{status}
+  </select>
+</mapper>
