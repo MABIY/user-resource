@@ -1,6 +1,5 @@
 package net.vipmro.user.resource.web.spring;
 
-import net.vipmro.user.passport.oauth2.commons.CustomAuthenticationProvider;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -33,10 +32,9 @@ import static org.springframework.context.annotation.FilterType.ASSIGNABLE_TYPE;
 @Configuration
 @EnableResourceServer
 @EnableWebSecurity
-@ComponentScan(basePackageClasses = {net.vipmro.user.passport.oauth2.commons.Components.class,
+@ComponentScan(basePackageClasses = {
 		net.vipmro.user.resource.infrastructure.Components.class,
-		net.vipmro.user.resource.domain.Components.class}
-, excludeFilters = {@ComponentScan.Filter(type = ASSIGNABLE_TYPE,value = CustomAuthenticationProvider.class)})
+		net.vipmro.user.resource.domain.Components.class})
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 	
 	
